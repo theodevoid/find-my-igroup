@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct RegisterScreen: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
     @State private var email: String = ""
     @State private var fullName: String = ""
     @State private var password: String = ""
+    
+    @State private var shouldNavigateToLogin: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -37,25 +41,24 @@ struct RegisterScreen: View {
                         .foregroundStyle(.white)
                         .padding(.bottom, 24)
                     
-                    VStack(spacing: 24) {
-                        VStack(alignment: .leading, spacing: 8) {
-                            TextField("Email", text: $email, prompt: Text("Email").foregroundStyle(.gray))
-                            Divider()
-                                .overlay(Color.gray)
-                        }
+                    VStack(spacing: 16) {
+                        TextField("Email", text: $email, prompt: Text("Email").foregroundStyle(.gray))
                         
-                        VStack(alignment: .leading, spacing: 8) {
-                            TextField("Full Name", text: $email, prompt: Text("Full Name").foregroundStyle(.gray))
-                            Divider()
-                                .overlay(Color.gray)
-                        }
+                        Divider()
+                            .overlay(Color.gray)
                         
-                        VStack(alignment: .leading, spacing: 8) {
-                            SecureField("Password", text: $password, prompt: Text("Password").foregroundStyle(.gray))
-                            Divider()
-                                .overlay(Color.gray)
-                        }
+                        TextField("Full Name", text: $email, prompt: Text("Full Name").foregroundStyle(.gray))
+                        
+                        Divider()
+                            .overlay(Color.gray)
+                        
+                        SecureField("Password", text: $password, prompt: Text("Password").foregroundStyle(.gray))
                     }
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(.gray)
+                    )
                     
                     Button(action: {
                         
@@ -75,9 +78,13 @@ struct RegisterScreen: View {
                     .padding(.top, 32)
                     HStack() {
                         Spacer()
+                        
                         Text("Already have an account?")
                             .foregroundStyle(.white)
-                        Button(action: {}, label: {
+                        
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }, label: {
                             Text("Log in")
                         })
                         Spacer()
@@ -90,6 +97,7 @@ struct RegisterScreen: View {
             }
             .ignoresSafeArea()
         }
+        .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
     }
 }
 

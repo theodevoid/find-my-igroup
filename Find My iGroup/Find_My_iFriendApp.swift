@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct Find_My_iFriendApp: App {
+    @StateObject var viewModel = AuthViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(viewModel)
         }
     }
 }

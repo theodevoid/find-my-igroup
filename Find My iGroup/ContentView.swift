@@ -8,35 +8,38 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel : AuthViewModel
+    
     var body: some View {
-        TabView {
-            NavigationStack {
+        Group {
+            if viewModel.currentUser != nil {
+                TabView {
+                    NavigationStack {
+                        HomeScreen()
+                    }.tabItem {
+                        Label("Home", systemImage: "house.fill")
+                    }
+                    
+                    MyEventsScreen()
+                        .tabItem {
+                            Label("Home", systemImage: "calendar")
+                        }
+                    
+                    ProfileScreen()
+                        .tabItem {
+                            Label("Home", systemImage: "person.fill")
+                        }
+                    
+                }
+            } else {
                 LoginScreen()
             }
-            
-//            Group {
-//                NavigationStack {
-//                    HomeScreen()
-//                }.tabItem {
-//                    Label("Home", systemImage: "house.fill")
-//                }
-//
-//                MyEventsScreen()
-//                    .tabItem {
-//                        Label("Home", systemImage: "calendar")
-//                    }
-//                
-//                ProfileScreen()
-//                    .tabItem {
-//                        Label("Home", systemImage: "person.fill")
-//                    }
-//            }
-        }
-        .preferredColorScheme(.dark)
-
-//        NavigationStack {
-//            DashboardList()
-//        }
+        }.preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+        
+        
+        //        NavigationStack {
+        //            DashboardList()
+        //        }
     }
 }
 

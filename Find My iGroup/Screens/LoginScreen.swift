@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct LoginScreen: View {
+    @EnvironmentObject var viewModel : AuthViewModel
+    
     @State private var email: String = ""
     @State private var password: String = ""
+    
+    @State private var shouldNavigateToRegister: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -36,22 +40,22 @@ struct LoginScreen: View {
                         .foregroundStyle(.white)
                         .padding(.bottom, 24)
                     
-                    VStack(spacing: 24) {
-                        VStack(alignment: .leading, spacing: 8) {
-                            TextField("Email", text: $email, prompt: Text("Email").foregroundStyle(.gray))
-                            Divider()
-                                .overlay(Color.gray)
-                        }
+                    VStack(spacing: 16) {
+                        TextField("Email", text: $email, prompt: Text("Email").foregroundStyle(.gray))
                         
-                        VStack(alignment: .leading, spacing: 8) {
-                            SecureField("Password", text: $password, prompt: Text("Password").foregroundStyle(.gray))
-                            Divider()
-                                .overlay(Color.gray)
-                        }
+                        Divider()
+                            .overlay(Color.gray)
+                        
+                        SecureField("Password", text: $password, prompt: Text("Password").foregroundStyle(.gray))
                     }
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(.gray)
+                    )
                     
                     Button(action: {
-                        
+                        viewModel.login(email: email, password: password)
                     }) {
                         HStack {
                             Spacer()
@@ -67,11 +71,15 @@ struct LoginScreen: View {
                     }
                     .padding(.top, 32)
                     
+                    NavigationLink(destination: RegisterScreen(), isActive: $shouldNavigateToRegister) {EmptyView()}
+                    
                     HStack() {
                         Spacer()
                         Text("Don't have an account?")
                             .foregroundStyle(.white)
-                        Button(action: {}, label: {
+                        Button(action: {
+                            shouldNavigateToRegister = true
+                        }, label: {
                             Text("Register instead")
                         })
                         Spacer()

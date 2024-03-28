@@ -22,6 +22,7 @@
 		E45123662BB53C64002B737B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45123562BB53C64002B737B /* ContentView.swift */; };
 		E45123672BB53C64002B737B /* DashboardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45123572BB53C64002B737B /* DashboardList.swift */; };
 		E45123682BB53C64002B737B /* Find_My_iFriendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45123582BB53C64002B737B /* Find_My_iFriendApp.swift */; };
+		E451236D2BB55740002B737B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451236C2BB55740002B737B /* AuthViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		E45123562BB53C64002B737B /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E45123572BB53C64002B737B /* DashboardList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardList.swift; sourceTree = "<group>"; };
 		E45123582BB53C64002B737B /* Find_My_iFriendApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Find_My_iFriendApp.swift; sourceTree = "<group>"; };
+		E451236C2BB55740002B737B /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 		E45123522BB53C64002B737B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				E451236C2BB55740002B737B /* AuthViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				E451235D2BB53C64002B737B /* EventDetailScreen.swift in Sources */,
 				E451235F2BB53C64002B737B /* LoginScreen.swift in Sources */,
 				E45123682BB53C64002B737B /* Find_My_iFriendApp.swift in Sources */,
+				E451236D2BB55740002B737B /* AuthViewModel.swift in Sources */,
 				E451235E2BB53C64002B737B /* HomeScreen.swift in Sources */,
 				E451235A2BB53C64002B737B /* Event.swift in Sources */,
 				E45123612BB53C64002B737B /* ProfileScreen.swift in Sources */,
