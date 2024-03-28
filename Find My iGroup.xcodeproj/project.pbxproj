@@ -7,18 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E432ACFA2BA97CEE00E4B48C /* Find_My_iFriendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E432ACF92BA97CEE00E4B48C /* Find_My_iFriendApp.swift */; };
-		E432ACFC2BA97CEE00E4B48C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E432ACFB2BA97CEE00E4B48C /* ContentView.swift */; };
-		E432ACFE2BA97CEF00E4B48C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E432ACFD2BA97CEF00E4B48C /* Assets.xcassets */; };
-		E432AD012BA97CEF00E4B48C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E432AD002BA97CEF00E4B48C /* Preview Assets.xcassets */; };
+		E451235A2BB53C64002B737B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45123442BB53C64002B737B /* Event.swift */; };
+		E451235B2BB53C64002B737B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E45123462BB53C64002B737B /* Preview Assets.xcassets */; };
+		E451235C2BB53C64002B737B /* EditProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45123482BB53C64002B737B /* EditProfileScreen.swift */; };
+		E451235D2BB53C64002B737B /* EventDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45123492BB53C64002B737B /* EventDetailScreen.swift */; };
+		E451235E2BB53C64002B737B /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451234A2BB53C64002B737B /* HomeScreen.swift */; };
+		E451235F2BB53C64002B737B /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451234B2BB53C64002B737B /* LoginScreen.swift */; };
+		E45123602BB53C64002B737B /* MyEventsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451234C2BB53C64002B737B /* MyEventsScreen.swift */; };
+		E45123612BB53C64002B737B /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451234D2BB53C64002B737B /* ProfileScreen.swift */; };
+		E45123622BB53C64002B737B /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451234E2BB53C64002B737B /* RegisterScreen.swift */; };
+		E45123632BB53C64002B737B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45123502BB53C64002B737B /* NetworkManager.swift */; };
+		E45123642BB53C64002B737B /* EventListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45123532BB53C64002B737B /* EventListItem.swift */; };
+		E45123652BB53C64002B737B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E45123552BB53C64002B737B /* Assets.xcassets */; };
+		E45123662BB53C64002B737B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45123562BB53C64002B737B /* ContentView.swift */; };
+		E45123672BB53C64002B737B /* DashboardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45123572BB53C64002B737B /* DashboardList.swift */; };
+		E45123682BB53C64002B737B /* Find_My_iFriendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45123582BB53C64002B737B /* Find_My_iFriendApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E432ACF62BA97CEE00E4B48C /* Find My iFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find My iFriend.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E432ACF92BA97CEE00E4B48C /* Find_My_iFriendApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Find_My_iFriendApp.swift; sourceTree = "<group>"; };
-		E432ACFB2BA97CEE00E4B48C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		E432ACFD2BA97CEF00E4B48C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E432AD002BA97CEF00E4B48C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E432ACF62BA97CEE00E4B48C /* Find My iGroup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find My iGroup.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E45123442BB53C64002B737B /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		E45123462BB53C64002B737B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E45123482BB53C64002B737B /* EditProfileScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileScreen.swift; sourceTree = "<group>"; };
+		E45123492BB53C64002B737B /* EventDetailScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailScreen.swift; sourceTree = "<group>"; };
+		E451234A2BB53C64002B737B /* HomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		E451234B2BB53C64002B737B /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		E451234C2BB53C64002B737B /* MyEventsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsScreen.swift; sourceTree = "<group>"; };
+		E451234D2BB53C64002B737B /* ProfileScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		E451234E2BB53C64002B737B /* RegisterScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
+		E45123502BB53C64002B737B /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E45123532BB53C64002B737B /* EventListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListItem.swift; sourceTree = "<group>"; };
+		E45123552BB53C64002B737B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E45123562BB53C64002B737B /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E45123572BB53C64002B737B /* DashboardList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardList.swift; sourceTree = "<group>"; };
+		E45123582BB53C64002B737B /* Find_My_iFriendApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Find_My_iFriendApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +57,7 @@
 		E432ACED2BA97CEE00E4B48C = {
 			isa = PBXGroup;
 			children = (
-				E432ACF82BA97CEE00E4B48C /* Find My iFriend */,
+				E45123592BB53C64002B737B /* Find My iGroup */,
 				E432ACF72BA97CEE00E4B48C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,36 +65,95 @@
 		E432ACF72BA97CEE00E4B48C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E432ACF62BA97CEE00E4B48C /* Find My iFriend.app */,
+				E432ACF62BA97CEE00E4B48C /* Find My iGroup.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E432ACF82BA97CEE00E4B48C /* Find My iFriend */ = {
+		E45123452BB53C64002B737B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E432ACF92BA97CEE00E4B48C /* Find_My_iFriendApp.swift */,
-				E432ACFB2BA97CEE00E4B48C /* ContentView.swift */,
-				E432ACFD2BA97CEF00E4B48C /* Assets.xcassets */,
-				E432ACFF2BA97CEF00E4B48C /* Preview Content */,
+				E45123442BB53C64002B737B /* Event.swift */,
 			);
-			path = "Find My iFriend";
+			path = Models;
 			sourceTree = "<group>";
 		};
-		E432ACFF2BA97CEF00E4B48C /* Preview Content */ = {
+		E45123472BB53C64002B737B /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				E432AD002BA97CEF00E4B48C /* Preview Assets.xcassets */,
+				E45123462BB53C64002B737B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E451234F2BB53C64002B737B /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				E45123482BB53C64002B737B /* EditProfileScreen.swift */,
+				E45123492BB53C64002B737B /* EventDetailScreen.swift */,
+				E451234A2BB53C64002B737B /* HomeScreen.swift */,
+				E451234B2BB53C64002B737B /* LoginScreen.swift */,
+				E451234C2BB53C64002B737B /* MyEventsScreen.swift */,
+				E451234D2BB53C64002B737B /* ProfileScreen.swift */,
+				E451234E2BB53C64002B737B /* RegisterScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		E45123512BB53C64002B737B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E45123502BB53C64002B737B /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E45123522BB53C64002B737B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E45123542BB53C64002B737B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E45123532BB53C64002B737B /* EventListItem.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E45123592BB53C64002B737B /* Find My iGroup */ = {
+			isa = PBXGroup;
+			children = (
+				E45123692BB53D8F002B737B /* Extensions */,
+				E45123452BB53C64002B737B /* Models */,
+				E45123472BB53C64002B737B /* Preview Content */,
+				E451234F2BB53C64002B737B /* Screens */,
+				E45123512BB53C64002B737B /* Services */,
+				E45123522BB53C64002B737B /* ViewModels */,
+				E45123542BB53C64002B737B /* Views */,
+				E45123552BB53C64002B737B /* Assets.xcassets */,
+				E45123562BB53C64002B737B /* ContentView.swift */,
+				E45123572BB53C64002B737B /* DashboardList.swift */,
+				E45123582BB53C64002B737B /* Find_My_iFriendApp.swift */,
+			);
+			path = "Find My iGroup";
+			sourceTree = "<group>";
+		};
+		E45123692BB53D8F002B737B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E432ACF52BA97CEE00E4B48C /* Find My iFriend */ = {
+		E432ACF52BA97CEE00E4B48C /* Find My iGroup */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E432AD042BA97CEF00E4B48C /* Build configuration list for PBXNativeTarget "Find My iFriend" */;
+			buildConfigurationList = E432AD042BA97CEF00E4B48C /* Build configuration list for PBXNativeTarget "Find My iGroup" */;
 			buildPhases = (
 				E432ACF22BA97CEE00E4B48C /* Sources */,
 				E432ACF32BA97CEE00E4B48C /* Frameworks */,
@@ -82,9 +163,9 @@
 			);
 			dependencies = (
 			);
-			name = "Find My iFriend";
+			name = "Find My iGroup";
 			productName = "Find My iFriend";
-			productReference = E432ACF62BA97CEE00E4B48C /* Find My iFriend.app */;
+			productReference = E432ACF62BA97CEE00E4B48C /* Find My iGroup.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +183,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E432ACF12BA97CEE00E4B48C /* Build configuration list for PBXProject "Find My iFriend" */;
+			buildConfigurationList = E432ACF12BA97CEE00E4B48C /* Build configuration list for PBXProject "Find My iGroup" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +196,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E432ACF52BA97CEE00E4B48C /* Find My iFriend */,
+				E432ACF52BA97CEE00E4B48C /* Find My iGroup */,
 			);
 		};
 /* End PBXProject section */
@@ -125,8 +206,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E432AD012BA97CEF00E4B48C /* Preview Assets.xcassets in Resources */,
-				E432ACFE2BA97CEF00E4B48C /* Assets.xcassets in Resources */,
+				E451235B2BB53C64002B737B /* Preview Assets.xcassets in Resources */,
+				E45123652BB53C64002B737B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +218,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E432ACFC2BA97CEE00E4B48C /* ContentView.swift in Sources */,
-				E432ACFA2BA97CEE00E4B48C /* Find_My_iFriendApp.swift in Sources */,
+				E45123642BB53C64002B737B /* EventListItem.swift in Sources */,
+				E45123672BB53C64002B737B /* DashboardList.swift in Sources */,
+				E45123662BB53C64002B737B /* ContentView.swift in Sources */,
+				E45123602BB53C64002B737B /* MyEventsScreen.swift in Sources */,
+				E45123622BB53C64002B737B /* RegisterScreen.swift in Sources */,
+				E45123632BB53C64002B737B /* NetworkManager.swift in Sources */,
+				E451235C2BB53C64002B737B /* EditProfileScreen.swift in Sources */,
+				E451235D2BB53C64002B737B /* EventDetailScreen.swift in Sources */,
+				E451235F2BB53C64002B737B /* LoginScreen.swift in Sources */,
+				E45123682BB53C64002B737B /* Find_My_iFriendApp.swift in Sources */,
+				E451235E2BB53C64002B737B /* HomeScreen.swift in Sources */,
+				E451235A2BB53C64002B737B /* Event.swift in Sources */,
+				E45123612BB53C64002B737B /* ProfileScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +363,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Find My iFriend/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Find My iGroup/Preview Content\"";
 				DEVELOPMENT_TEAM = TUQX899L59;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -300,7 +392,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Find My iFriend/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Find My iGroup/Preview Content\"";
 				DEVELOPMENT_TEAM = TUQX899L59;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -325,7 +417,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E432ACF12BA97CEE00E4B48C /* Build configuration list for PBXProject "Find My iFriend" */ = {
+		E432ACF12BA97CEE00E4B48C /* Build configuration list for PBXProject "Find My iGroup" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E432AD022BA97CEF00E4B48C /* Debug */,
@@ -334,7 +426,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E432AD042BA97CEF00E4B48C /* Build configuration list for PBXNativeTarget "Find My iFriend" */ = {
+		E432AD042BA97CEF00E4B48C /* Build configuration list for PBXNativeTarget "Find My iGroup" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E432AD052BA97CEF00E4B48C /* Debug */,
