@@ -22,10 +22,11 @@ struct MyEventsScreen: View {
                     Text("Past Events").tag(1)
                 }
                 .pickerStyle(.automatic)
+                
                 ForEach(selectedScreen == 0 ? eventViewModel.myUpcomingEvents : eventViewModel.myPastEvents) { event in
                     ZStack {
                         EventListItem(organization: event.organization, title: event.title, schedule: event.schedule)
-                        NavigationLink(destination: EventDetailScreen()) {
+                        NavigationLink(destination: EventDetailScreen(id: event.id)) {
                             EmptyView()
                         }
                         .buttonStyle(PlainButtonStyle())
@@ -36,6 +37,18 @@ struct MyEventsScreen: View {
             .listStyle(.insetGrouped)
             .listRowSpacing(8)
             .navigationTitle("My Events")
+            .refreshable {
+                Task {
+                    try await eventViewModel.getMyPastEvents()
+                    try await eventViewModel.getMyUpcomingEvents()
+                }
+            }
+            .onAppear {
+                Task {
+                    try await eventViewModel.getMyPastEvents()
+                    try await eventViewModel.getMyUpcomingEvents()
+                }
+            }
         }
     }
 }

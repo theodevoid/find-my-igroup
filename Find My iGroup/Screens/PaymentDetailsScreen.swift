@@ -11,13 +11,19 @@ import PhotosUI
 struct PaymentDetailsScreen: View {
     @Environment (\.dismiss) var dismiss
     
+    @ObservedObject var eventViewModel = EventViewModel()
+    
     @State private var paymentProofItem: PhotosPickerItem?
     @State private var paymentProofImage: Image?
+    @State private var paymentProofUIImage: UIImage? = nil
+    
+    @State private var paymentSuccessAlertIsShowing: Bool = false
     
     var paymentAccountNumber: String
     var paymentAccountName: String
     var paymentAccountBank: String
     var price: Int
+    var eventId: Int
     
     var paymentProofImageUrl: String?
     
@@ -87,14 +93,42 @@ struct PaymentDetailsScreen: View {
                                     print("Failed")
                                 }
                             }
+                            
+                            Task { @MainActor in
+                                if let data = try? await paymentProofItem?.loadTransferable(type: Data.self) {
+                                    paymentProofUIImage = UIImage(data: data)
+                                    return
+                                }
+                            }
                         }
+                    }
+                } else {
+                    Section {
+                        AsyncImage(url: URL(string: paymentProofImageUrl!)) { image in
+                            image
+                                .resizable()
+                                .scaledToFit()
+                        } placeholder: {
+                            HStack {
+                                Spacer()
+                                ProgressView()
+                                Spacer()
+                            }
+                        }
+                        .frame(maxHeight: 420)
                     }
                 }
                 
                 if paymentProofImage != nil {
                     Button(action: {
                         Task {
-                            paymentProofImage = nil
+                            do {
+                                try await eventViewModel.uploadPaymentAndJoinEvent(eventId: eventId, image: paymentProofUIImage!)
+                                
+                                paymentSuccessAlertIsShowing = true
+                            } catch {
+                                print(error)
+                            }
                         }
                     }, label: {
                         HStack {
@@ -103,11 +137,16 @@ struct PaymentDetailsScreen: View {
                             Spacer()
                         }
                     })
+                    .alert("Upload Success!", isPresented: $paymentSuccessAlertIsShowing) {
+                        Button("OK", role: .cancel) {
+                            dismiss.callAsFunction()
+                        }
+                    }
                 }
             }
             .toolbar(content: {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Cancel") {
+                    Button(((paymentProofImageUrl?.isEmpty) != nil) ? "Close" : "Cancel") {
                         dismiss.callAsFunction()
                     }
                     .foregroundStyle(.red)

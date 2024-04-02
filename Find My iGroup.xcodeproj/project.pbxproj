@@ -27,6 +27,8 @@
 		E45123672BB53C64002B737B /* DashboardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45123572BB53C64002B737B /* DashboardList.swift */; };
 		E45123682BB53C64002B737B /* Find_My_iFriendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45123582BB53C64002B737B /* Find_My_iFriendApp.swift */; };
 		E451236D2BB55740002B737B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451236C2BB55740002B737B /* AuthViewModel.swift */; };
+		E4EF75222BBC4C5B0069EBCD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EF75212BBC4C5B0069EBCD /* User.swift */; };
+		E4EF75242BBC56C90069EBCD /* SIG.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EF75232BBC56C90069EBCD /* SIG.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,9 @@
 		E45123572BB53C64002B737B /* DashboardList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardList.swift; sourceTree = "<group>"; };
 		E45123582BB53C64002B737B /* Find_My_iFriendApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Find_My_iFriendApp.swift; sourceTree = "<group>"; };
 		E451236C2BB55740002B737B /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		E4EF75212BBC4C5B0069EBCD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E4EF75232BBC56C90069EBCD /* SIG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIG.swift; sourceTree = "<group>"; };
+		E4EF75252BBC6B660069EBCD /* Find My iGroup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Find My iGroup.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				E45123442BB53C64002B737B /* Event.swift */,
+				E4EF75212BBC4C5B0069EBCD /* User.swift */,
+				E4EF75232BBC56C90069EBCD /* SIG.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -141,6 +148,7 @@
 		E45123592BB53C64002B737B /* Find My iGroup */ = {
 			isa = PBXGroup;
 			children = (
+				E4EF75252BBC6B660069EBCD /* Find My iGroup.entitlements */,
 				E45123692BB53D8F002B737B /* Extensions */,
 				E45123452BB53C64002B737B /* Models */,
 				E45123472BB53C64002B737B /* Preview Content */,
@@ -244,6 +252,7 @@
 				E451235C2BB53C64002B737B /* EditProfileScreen.swift in Sources */,
 				E451235D2BB53C64002B737B /* EventDetailScreen.swift in Sources */,
 				E42C466B2BBAA35900867214 /* PaymentDetailsScreen.swift in Sources */,
+				E4EF75242BBC56C90069EBCD /* SIG.swift in Sources */,
 				E42C466D2BBAB13800867214 /* SIGSelectionScreen.swift in Sources */,
 				E451235F2BB53C64002B737B /* LoginScreen.swift in Sources */,
 				E45123682BB53C64002B737B /* Find_My_iFriendApp.swift in Sources */,
@@ -251,6 +260,7 @@
 				E451235E2BB53C64002B737B /* HomeScreen.swift in Sources */,
 				E451235A2BB53C64002B737B /* Event.swift in Sources */,
 				E45123612BB53C64002B737B /* ProfileScreen.swift in Sources */,
+				E4EF75222BBC4C5B0069EBCD /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,12 +391,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Find My iGroup/Find My iGroup.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Find My iGroup/Preview Content\"";
 				DEVELOPMENT_TEAM = TUQX899L59;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "This app uses Calendars to remind you of upcoming events.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -397,7 +409,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.voidfnc.Find-My-iFriend";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.voidfnc.find-my-igroup";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -410,12 +422,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Find My iGroup/Find My iGroup.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Find My iGroup/Preview Content\"";
 				DEVELOPMENT_TEAM = TUQX899L59;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "This app uses Calendars to remind you of upcoming events.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -426,7 +440,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.voidfnc.Find-My-iFriend";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.voidfnc.find-my-igroup";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

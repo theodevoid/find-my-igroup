@@ -26,4 +26,5 @@ struct Event: Decodable, Identifiable {
     var documentationMainUrl: String
     
     var paymentProofImageUrl: String?
+    var joinedCount: Int?
 }

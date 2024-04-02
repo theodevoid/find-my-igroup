@@ -9,12 +9,18 @@ import SwiftUI
 
 struct RegisterScreen: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
+    @Environment(\.dismiss) var dismiss
+    
+    @ObservedObject var authViewModel = AuthViewModel()
+    
     @State private var email: String = ""
     @State private var fullName: String = ""
     @State private var password: String = ""
     
     @State private var shouldNavigateToLogin: Bool = false
+    
+    @State private var isLoading = false
+    @State private var registeredSuccess = false
     
     var body: some View {
         NavigationStack {
@@ -47,7 +53,7 @@ struct RegisterScreen: View {
                         Divider()
                             .overlay(Color.gray)
                         
-                        TextField("Full Name", text: $email, prompt: Text("Full Name").foregroundStyle(.gray))
+                        TextField("Full Name", text: $fullName, prompt: Text("Full Name").foregroundStyle(.gray))
                         
                         Divider()
                             .overlay(Color.gray)
@@ -61,21 +67,44 @@ struct RegisterScreen: View {
                     )
                     
                     Button(action: {
-                        
+                        Task {
+                            isLoading = true
+                            
+                            let ONE_SECOND = 3000000000
+                            try await Task.sleep(nanoseconds: UInt64(ONE_SECOND))
+                            
+                            try await authViewModel.register(name: fullName, email: email, password: password)
+                            
+                            registeredSuccess = true
+                            isLoading = false
+                        }
                     }) {
                         HStack {
                             Spacer()
-                            Text("Register")
-                                .multilineTextAlignment(.center)
-                                .foregroundStyle(.black)
-                                .fontWeight(.bold)
+                            if isLoading {
+                                ProgressView()
+                                    .tint(.black)
+                            } else {
+                                Text("Register")
+                                    .multilineTextAlignment(.center)
+                                    .foregroundStyle(.black)
+                                    .fontWeight(.bold)
+                            }
+                            
                             Spacer()
                         }
                         .frame(height: 48)
                         .background(.white)
                         .clipShape(.capsule)
                     }
+                    .alert("Registration Successful!", isPresented: $registeredSuccess) {
+                        Button("Close", role: .cancel) {
+                            dismiss.callAsFunction()
+                        }
+                    }
+                    .disabled(isLoading)
                     .padding(.top, 32)
+                    
                     HStack() {
                         Spacer()
                         

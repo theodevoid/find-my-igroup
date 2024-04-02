@@ -28,7 +28,7 @@ struct EventListItem: View {
             
             Spacer()
             
-            Text(organization)
+            Text(organization.capitalized(with: Locale(identifier: "id-ID")))
                 .font(.subheadline)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 4)

@@ -15,6 +15,8 @@ struct LoginScreen: View {
     
     @State private var shouldNavigateToRegister: Bool = false
     
+    @State private var isLoading = false
+    
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottomLeading) {
@@ -42,6 +44,7 @@ struct LoginScreen: View {
                     
                     VStack(spacing: 16) {
                         TextField("Email", text: $email, prompt: Text("Email").foregroundStyle(.gray))
+                            .keyboardType(.emailAddress)
                         
                         Divider()
                             .overlay(Color.gray)
@@ -56,21 +59,33 @@ struct LoginScreen: View {
                     
                     Button(action: {
                         Task {
+                            isLoading = true
+                            
+                            let ONE_SECOND = 1000000000
+                            try await Task.sleep(nanoseconds: UInt64(ONE_SECOND))
+                            
                             try await viewModel.login(email: email, password: password)
+                            isLoading = false
                         }
                     }) {
                         HStack {
                             Spacer()
-                            Text("Log in")
-                                .multilineTextAlignment(.center)
-                                .foregroundStyle(.black)
-                                .fontWeight(.bold)
+                            
+                            if isLoading {
+                                ProgressView()
+                            } else {
+                                Text("Log in")
+                                    .multilineTextAlignment(.center)
+                                    .foregroundStyle(.black)
+                                    .fontWeight(.bold)
+                            }
                             Spacer()
                         }
                         .frame(height: 48)
                         .background(.white)
                         .clipShape(.capsule)
                     }
+                    .disabled(isLoading)
                     .padding(.top, 32)
                     
                     NavigationLink(destination: RegisterScreen(), isActive: $shouldNavigateToRegister) {EmptyView()}
