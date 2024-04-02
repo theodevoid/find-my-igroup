@@ -12,34 +12,65 @@ struct EventListItem: View {
     var organization: String
     var title: String
     var schedule: Date
+    var price: Int
+    var isJoined: Bool?
     
     var body: some View {
-        HStack (alignment: .top) {
-            VStack(alignment: .leading) {
-                Text(schedule.formatted(.dateTime.weekday().day().month().year().hour().minute()))
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-                Text(title)
-                    .foregroundStyle(.primary)
-                    .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
-                    .font(.title3)
-                    .fontWeight(.semibold)
+        ZStack(alignment: .center) {
+            Image(organization.lowercased())
+                .resizable()
+                .scaledToFill()
+                .frame(height: 200)
+            
+            LinearGradient(colors: [.clear, .black], startPoint: .topTrailing, endPoint: .bottomLeading)
+                .opacity(1)
+            
+            VStack (alignment: .leading, spacing: 0) {
+                Spacer()
+                
+                VStack(alignment: .leading, spacing: 6) {
+                    Spacer()
+                    Text(schedule.formatted(.dateTime.weekday().day().month().year().hour().minute()))
+                        .font(.callout)
+                        .foregroundStyle(.secondary)
+                    
+                    Text(title)
+                        .foregroundStyle(.primary)
+                        .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .fixedSize(horizontal: false, vertical: true)
+                    
+                    HStack(spacing: 4) {
+                        Image(systemName: "person.2.fill")
+                        Text(organization.capitalized(with: Locale(identifier: "id-ID")))
+                            .font(.subheadline)
+                    }
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.top)
+                .padding(.leading)
+                .padding(.trailing)
+                
+                HStack {
+                    Spacer()
+                    Text(price, format: .currency(code: "IDR"))
+                        .foregroundStyle(.indigo)
+                        .fontWeight(.bold)
+                        .padding(.all, 12)
+                        .background(
+                            .foreground
+                        )
+                        .clipShape(.rect(topLeadingRadius: 8))
+                }
             }
-            
-            Spacer()
-            
-            Text(organization.capitalized(with: Locale(identifier: "id-ID")))
-                .font(.subheadline)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke()
-                )
         }
+        .frame(height: 200)
+        
     }
 }
 
 #Preview {
-    EventListItem(organization: "Badminton", title: "Fun game badminton", schedule: Date())
+    EventListItem(organization: "Badminton", title: "Fun game badminton", schedule: Date(), price: 12000)
 }

@@ -18,13 +18,14 @@ struct HomeScreen: View {
         ZStack {
             List($upcomingEvents, id: \.id) { event in
                 ZStack {
-                    EventListItem(organization: event.wrappedValue.organization, title: event.wrappedValue.title, schedule: event.wrappedValue.schedule)
+                    EventListItem(organization: event.wrappedValue.organization, title: event.wrappedValue.title, schedule: event.wrappedValue.schedule, price: event.wrappedValue.price, isJoined: event.wrappedValue.isJoined)
                     NavigationLink(destination: EventDetailScreen(id: event.wrappedValue.id)) {
                         EmptyView()
                     }
                     .buttonStyle(PlainButtonStyle())
                     .opacity(0)
                 }
+                .listRowInsets(EdgeInsets())
             }
             .listStyle(.insetGrouped)
             .listRowSpacing(8)

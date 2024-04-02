@@ -25,7 +25,7 @@ struct EventDetailScreen: View {
     //    }
     
     func requestCalendarAccess() {
-        store.requestWriteOnlyAccessToEvents(completion: {_,_ in 
+        store.requestWriteOnlyAccessToEvents(completion: {_,_ in
             print("ok")
         })
     }
@@ -63,7 +63,7 @@ struct EventDetailScreen: View {
                         VStack(alignment: .leading) {
                             Spacer()
                             HStack {
-                                VStack(alignment: .leading) {
+                                VStack(alignment: .leading, spacing: 4) {
                                     Text(eventViewModel.viewedEvent!.schedule.formatted(.dateTime.day().month().year().hour().minute()))
                                         .font(.subheadline)
                                     
@@ -71,41 +71,43 @@ struct EventDetailScreen: View {
                                         .font(.title)
                                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                                         .padding(.bottom, -4)
-                                    
-                                    Text(eventViewModel.viewedEvent!.organization.capitalized(with: Locale(identifier: "id-ID")))
-                                        .padding(.horizontal, 8)
-                                        .padding(.vertical, 4)
-                                        .background(
-                                            RoundedRectangle(cornerRadius: 16)
-                                                .stroke()
-                                        )
+                                    HStack(alignment: .center) {
+                                        HStack(spacing: 8) {
+                                            Image(systemName: "person.2.fill")
+                                            Text("SIG " + eventViewModel.viewedEvent!.organization.capitalized(with: Locale(identifier: "id-ID")))
+                                        }
+                                        
+                                        Spacer()
+                                        
+                                        Button(action: {
+                                            paymentSheetIsShowing.toggle()
+                                        }, label: {
+                                            if eventViewModel.viewedEvent!.isJoined {
+                                                Text("Joined")
+                                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                            } else {
+                                                Text(eventViewModel.viewedEvent!.price, format: .currency(code: "IDR"))
+                                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                            }
+                                        })
+                                        .padding(.horizontal, 12)
+                                        .padding(.vertical, 6)
+                                        .background(.indigo)
+                                        .foregroundStyle(.foreground)
+                                        .clipShape(Capsule())
+                                        .fullScreenCover(isPresented: $paymentSheetIsShowing, onDismiss: {
+                                            Task {
+                                                try await eventViewModel.getEventById(eventId: id)
+                                                isLoading = false
+                                            }
+                                        }) {
+                                            PaymentDetailsScreen(
+                                                paymentAccountNumber: eventViewModel.viewedEvent!.paymentAccountNumber, paymentAccountName: eventViewModel.viewedEvent!.paymentAccountName, paymentAccountBank: eventViewModel.viewedEvent!.paymentAccountBank, price: eventViewModel.viewedEvent!.price, eventId: id, paymentProofImageUrl: eventViewModel.viewedEvent!.paymentProofImageUrl
+                                            )
+                                        }
+                                    }
                                 }
-                                
                                 Spacer()
-                                
-                                Button(action: {
-                                    paymentSheetIsShowing.toggle()
-                                }, label: {
-                                    if eventViewModel.viewedEvent!.isJoined {
-                                        Text("Joined")
-                                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                    } else {
-                                        Text(eventViewModel.viewedEvent!.price, format: .currency(code: "IDR"))
-                                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                    }
-                                })
-                                .buttonStyle(BorderedProminentButtonStyle())
-                                .fullScreenCover(isPresented: $paymentSheetIsShowing, onDismiss: {
-                                    Task {
-                                        try await eventViewModel.getEventById(eventId: id)
-                                        isLoading = false
-                                    }
-                                }) {
-                                    PaymentDetailsScreen(
-                                        paymentAccountNumber: eventViewModel.viewedEvent!.paymentAccountNumber, paymentAccountName: eventViewModel.viewedEvent!.paymentAccountName, paymentAccountBank: eventViewModel.viewedEvent!.paymentAccountBank, price: eventViewModel.viewedEvent!.price, eventId: id, paymentProofImageUrl: eventViewModel.viewedEvent!.paymentProofImageUrl
-                                    )
-                                }
-                                
                             }
                             
                         }

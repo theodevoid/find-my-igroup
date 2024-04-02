@@ -25,13 +25,14 @@ struct MyEventsScreen: View {
                 
                 ForEach(selectedScreen == 0 ? eventViewModel.myUpcomingEvents : eventViewModel.myPastEvents) { event in
                     ZStack {
-                        EventListItem(organization: event.organization, title: event.title, schedule: event.schedule)
+                        EventListItem(organization: event.organization, title: event.title, schedule: event.schedule, price: event.price, isJoined: event.isJoined)
                         NavigationLink(destination: EventDetailScreen(id: event.id)) {
                             EmptyView()
                         }
                         .buttonStyle(PlainButtonStyle())
                         .opacity(0)
                     }
+                    .listRowInsets(EdgeInsets())
                 }
             }
             .listStyle(.insetGrouped)
