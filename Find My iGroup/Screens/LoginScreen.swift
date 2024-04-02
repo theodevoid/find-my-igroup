@@ -55,7 +55,9 @@ struct LoginScreen: View {
                     )
                     
                     Button(action: {
-                        viewModel.login(email: email, password: password)
+                        Task {
+                            try await viewModel.login(email: email, password: password)
+                        }
                     }) {
                         HStack {
                             Spacer()

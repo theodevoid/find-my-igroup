@@ -10,26 +10,43 @@ import SwiftUI
 struct HomeScreen: View {
     @State private var selectedFilter = 0
     
+    @State private var upcomingEvents: [Event] = []
+    
+    @ObservedObject var homeViewModel = EventViewModel()
+    
     var body: some View {
         ZStack {
-            List {
-                Picker("", selection: $selectedFilter) {
-                    Text("Upcoming Events").tag(0)
-                    Text("Past Events").tag(1)
+            List($upcomingEvents, id: \.id) { event in
+                ZStack {
+                    EventListItem(organization: event.wrappedValue.organization, title: event.wrappedValue.title, schedule: event.wrappedValue.schedule)
+                    NavigationLink(destination: EventDetailScreen(id: event.wrappedValue.id)) {
+                        EmptyView()
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .opacity(0)
                 }
-                .pickerStyle(.automatic)
-                
-                EventListItem()
-                EventListItem()
-                EventListItem()
             }
-            .background(
-//                LinearGradient(gradient: Gradient(colors: [.orange, .primary]), startPoint: .topLeading, endPoint: .bottom)
-            )
             .listStyle(.insetGrouped)
             .listRowSpacing(8)
-            .navigationTitle("Home")
-//            .scrollContentBackground(.hidden)
+            .navigationTitle("Upcoming")
+            .onAppear {
+                Task {
+                    let fetchedEvents = try await homeViewModel.getUpcomingEvents()
+                    
+                    await MainActor.run {
+                        upcomingEvents = fetchedEvents
+                    }
+                }
+            }
+            .refreshable {
+                Task {
+                    let fetchedEvents = try await homeViewModel.getUpcomingEvents()
+                    
+                    await MainActor.run {
+                        upcomingEvents = fetchedEvents
+                    }
+                }
+            }
         }
     }
 }

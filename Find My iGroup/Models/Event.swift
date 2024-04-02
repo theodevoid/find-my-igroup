@@ -13,12 +13,17 @@ struct Event: Decodable, Identifiable {
     var organization: String
     var schedule: Date
     var location: String
+    var locationDetails: String
     var locationMapLink: String
-    var estimatedFee: Int
+    var price: Int
     var requirements: String
     var description: String
     var isJoined: Bool
     var paymentAccountNumber: String
     var paymentAccountName: String
     var paymentAccountBank: String
+    var documentationImageUrls: [String]
+    var documentationMainUrl: String
+    
+    var paymentProofImageUrl: String?
 }

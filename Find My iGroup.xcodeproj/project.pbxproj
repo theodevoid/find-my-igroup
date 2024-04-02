@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E42C46692BBA96C000867214 /* MembersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C46682BBA96C000867214 /* MembersList.swift */; };
+		E42C466B2BBAA35900867214 /* PaymentDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C466A2BBAA35900867214 /* PaymentDetailsScreen.swift */; };
+		E42C466D2BBAB13800867214 /* SIGSelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C466C2BBAB13800867214 /* SIGSelectionScreen.swift */; };
+		E42C466F2BBBE22D00867214 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C466E2BBBE22D00867214 /* EventViewModel.swift */; };
 		E451235A2BB53C64002B737B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45123442BB53C64002B737B /* Event.swift */; };
 		E451235B2BB53C64002B737B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E45123462BB53C64002B737B /* Preview Assets.xcassets */; };
 		E451235C2BB53C64002B737B /* EditProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45123482BB53C64002B737B /* EditProfileScreen.swift */; };
@@ -26,6 +30,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E42C46682BBA96C000867214 /* MembersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersList.swift; sourceTree = "<group>"; };
+		E42C466A2BBAA35900867214 /* PaymentDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsScreen.swift; sourceTree = "<group>"; };
+		E42C466C2BBAB13800867214 /* SIGSelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIGSelectionScreen.swift; sourceTree = "<group>"; };
+		E42C466E2BBBE22D00867214 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		E432ACF62BA97CEE00E4B48C /* Find My iGroup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find My iGroup.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E45123442BB53C64002B737B /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		E45123462BB53C64002B737B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -93,7 +101,10 @@
 			children = (
 				E45123482BB53C64002B737B /* EditProfileScreen.swift */,
 				E45123492BB53C64002B737B /* EventDetailScreen.swift */,
+				E42C466A2BBAA35900867214 /* PaymentDetailsScreen.swift */,
+				E42C46682BBA96C000867214 /* MembersList.swift */,
 				E451234A2BB53C64002B737B /* HomeScreen.swift */,
+				E42C466C2BBAB13800867214 /* SIGSelectionScreen.swift */,
 				E451234B2BB53C64002B737B /* LoginScreen.swift */,
 				E451234C2BB53C64002B737B /* MyEventsScreen.swift */,
 				E451234D2BB53C64002B737B /* ProfileScreen.swift */,
@@ -114,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				E451236C2BB55740002B737B /* AuthViewModel.swift */,
+				E42C466E2BBBE22D00867214 /* EventViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -222,6 +234,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E45123642BB53C64002B737B /* EventListItem.swift in Sources */,
+				E42C466F2BBBE22D00867214 /* EventViewModel.swift in Sources */,
+				E42C46692BBA96C000867214 /* MembersList.swift in Sources */,
 				E45123672BB53C64002B737B /* DashboardList.swift in Sources */,
 				E45123662BB53C64002B737B /* ContentView.swift in Sources */,
 				E45123602BB53C64002B737B /* MyEventsScreen.swift in Sources */,
@@ -229,6 +243,8 @@
 				E45123632BB53C64002B737B /* NetworkManager.swift in Sources */,
 				E451235C2BB53C64002B737B /* EditProfileScreen.swift in Sources */,
 				E451235D2BB53C64002B737B /* EventDetailScreen.swift in Sources */,
+				E42C466B2BBAA35900867214 /* PaymentDetailsScreen.swift in Sources */,
+				E42C466D2BBAB13800867214 /* SIGSelectionScreen.swift in Sources */,
 				E451235F2BB53C64002B737B /* LoginScreen.swift in Sources */,
 				E45123682BB53C64002B737B /* Find_My_iFriendApp.swift in Sources */,
 				E451236D2BB55740002B737B /* AuthViewModel.swift in Sources */,

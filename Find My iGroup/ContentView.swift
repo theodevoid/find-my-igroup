@@ -22,12 +22,12 @@ struct ContentView: View {
                     
                     MyEventsScreen()
                         .tabItem {
-                            Label("Home", systemImage: "calendar")
+                            Label("My Events", systemImage: "calendar")
                         }
                     
                     ProfileScreen()
                         .tabItem {
-                            Label("Home", systemImage: "person.fill")
+                            Label("Profile", systemImage: "person.fill")
                         }
                     
                 }
