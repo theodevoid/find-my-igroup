@@ -50,11 +50,14 @@ struct Find_My_iFriendApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     @StateObject var viewModel = AuthViewModel()
+    @StateObject var eventViewModel = EventViewModel()
+    @StateObject private var viewRouter = ViewRouter()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(viewModel)
+                .environmentObject(viewRouter)
         }
     }
 }

@@ -12,19 +12,16 @@ struct EventDetailScreen: View {
     var id: Int = 0
     
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject private var viewRouter: ViewRouter
     
-    @State private var paymentSheetIsShowing = false
+    @State private var confirmationDialogIsShowing = false
     @State private var isLoading = true
     @State private var calendarDialogIsShowing = false
     @State private var successAlertIsShowing = false
     
-    @ObservedObject var eventViewModel = EventViewModel()
+    @StateObject var eventViewModel = EventViewModel()
     
     let store = EKEventStore.init()
-    
-    //    init () {
-    //        store.req
-    //    }
     
     func requestCalendarAccess() {
         store.requestWriteOnlyAccessToEvents(completion: {_,_ in
@@ -53,7 +50,7 @@ struct EventDetailScreen: View {
     }
     
     var body: some View {
-        if !isLoading {
+        if !isLoading && eventViewModel.viewedEvent != nil {
             NavigationStack {
                 ScrollView {
                     ZStack(alignment: .leading) {
@@ -80,36 +77,6 @@ struct EventDetailScreen: View {
                                         }
                                         
                                         Spacer()
-                                        
-                                        Button(action: {
-                                            paymentSheetIsShowing.toggle()
-                                        }, label: {
-                                            if eventViewModel.viewedEvent!.isJoined {
-                                                Text("Joined")
-                                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                            } else {
-                                                Text(eventViewModel.viewedEvent!.price, format: .currency(code: "IDR"))
-                                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                            }
-                                        })
-                                        .padding(.horizontal, 12)
-                                        .padding(.vertical, 6)
-                                        .background(.orange)
-                                        .foregroundStyle(.foreground)
-                                        .clipShape(Capsule())
-                                        .fullScreenCover(isPresented: $paymentSheetIsShowing, onDismiss: {
-                                            Task {
-                                                try await eventViewModel.getEventById(eventId: id)
-                                                print("hellooooo")
-                                                if eventViewModel.viewedEvent!.isJoined {
-                                                    dismiss.callAsFunction()
-                                                }
-                                            }
-                                        }) {
-                                            PaymentDetailsScreen(
-                                                paymentAccountNumber: eventViewModel.viewedEvent!.paymentAccountNumber, paymentAccountName: eventViewModel.viewedEvent!.paymentAccountName, paymentAccountBank: eventViewModel.viewedEvent!.paymentAccountBank, price: eventViewModel.viewedEvent!.price, eventId: id, paymentProofImageUrl: eventViewModel.viewedEvent!.paymentProofImageUrl
-                                            )
-                                        }
                                     }
                                 }
                                 Spacer()
@@ -123,6 +90,20 @@ struct EventDetailScreen: View {
                         )
                     }
                     .frame(height: 274)
+                    .textCase(.uppercase)
+                    .font(.caption)
+                    
+                    HStack(alignment: .center) {
+                        Text("Total Rent Amount")
+                            .font(.callout)
+                            .foregroundStyle(.secondary)
+                        
+                        Spacer()
+                        
+                        Text(eventViewModel.viewedEvent!.totalPrice, format: .currency(code: "IDR") )
+                            .bold()
+                    }
+                    .padding(.horizontal)
                     
                     VStack(alignment: .leading, spacing: 16) {
                         VStack {
@@ -142,32 +123,20 @@ struct EventDetailScreen: View {
                                 
                                 Spacer()
                                 
-                                Image(systemName: "map")
-                                    .foregroundStyle(.background)
-                                    .padding(.all, 12)
-                                    .background(
-                                        Circle()
-                                    )
-                            }
-                            Divider()
-                            Link (destination: URL(string: eventViewModel.viewedEvent!.locationMapLink)!) {
-                                Text("Visit maps")
+                                Link (destination: URL(string: eventViewModel.viewedEvent!.locationMapLink)!) {
+                                    Image(systemName: "map")
+                                        .foregroundStyle(.background)
+                                        .padding(.all, 12)
+                                        .background(
+                                            Circle()
+                                        )
+                                }
+                                
                             }
                         }
                         .padding()
                         .background(.thinMaterial)
                         .clipShape(.rect(cornerRadius: 8))
-                        
-                        
-                        HStack(alignment: .center) {
-                            Text("Estimated Fee")
-                                .font(.callout)
-                                .foregroundStyle(.secondary)
-                            
-                            Spacer()
-                            
-                            Text(eventViewModel.viewedEvent!.price, format: .currency(code: "IDR") )
-                        }
                         
                         VStack(alignment: .leading) {
                             Text("Description")
@@ -195,29 +164,6 @@ struct EventDetailScreen: View {
                         .background(.ultraThinMaterial)
                         .clipShape(.rect(cornerRadius: 8))
                         .foregroundStyle(.primary)
-                        
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text("Documentation")
-                                    .font(.callout)
-                                    .foregroundStyle(.secondary)
-                                
-                                Spacer()
-                                
-                                Link(destination: URL(string: eventViewModel.viewedEvent!.documentationMainUrl)!) {
-                                    Text("View all")
-                                }
-                            }
-                            
-                            TabView {
-                                Image("badminton")
-                                Image("badminton")
-                                Image("badminton")
-                            }
-                            .tabViewStyle(.page)
-                            .frame(height: 200)
-                            .clipShape(.rect(cornerRadius: 8))
-                        }
                     }
                     .padding(.horizontal, 16)
                 }
@@ -228,6 +174,44 @@ struct EventDetailScreen: View {
                         try await eventViewModel.getEventById(eventId: id)
                     }
                 }
+                
+                VStack {
+                    VStack {
+                        Button(action: {
+                            confirmationDialogIsShowing = true
+                        }, label: {
+                            Text(eventViewModel.viewedEvent!.isJoined ? "Registered" : "Register")
+                                .bold()
+                                .frame(maxWidth: .infinity, maxHeight: 32)
+                        })
+                        .disabled(eventViewModel.viewedEvent!.isJoined)
+                        .buttonStyle(BorderedProminentButtonStyle())
+                        .tint(.orange)
+                        .confirmationDialog("Register to event?", isPresented: $confirmationDialogIsShowing) {
+                            Button("Register") {
+                                Task {
+                                    let impactMed = UIImpactFeedbackGenerator(style: .medium)
+                                    impactMed.impactOccurred()
+                                    
+                                    try await eventViewModel.registerToEvent(eventId: id)
+                                    
+                                    dismiss.callAsFunction()
+                                    
+                                    try await Task.sleep(nanoseconds: 1000000000)
+                                    
+                                    viewRouter.currentView = 1
+                                }
+                            }
+                            
+                            Button("Cancel", role: .cancel) {}
+                        }
+                    }
+                    .padding()
+                    .padding(.bottom, 32)
+                    .background(Color.black)
+                    .frame(alignment: .bottom)
+                }
+                
             }
             .toolbar {
                 Button(action: {
@@ -255,6 +239,7 @@ struct EventDetailScreen: View {
                 
             }
             .toolbar(.hidden, for: .tabBar)
+            .ignoresSafeArea(.container, edges: .bottom)
         } else {
             ProgressView()
                 .progressViewStyle(.circular)
@@ -262,6 +247,8 @@ struct EventDetailScreen: View {
                     Task {
                         try await eventViewModel.getEventById(eventId: id)
                         isLoading = false
+                        
+                        print(eventViewModel.viewedEvent)
                     }
                 }
         }

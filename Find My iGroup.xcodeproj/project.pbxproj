@@ -28,6 +28,9 @@
 		E45123682BB53C64002B737B /* Find_My_iFriendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45123582BB53C64002B737B /* Find_My_iFriendApp.swift */; };
 		E451236D2BB55740002B737B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451236C2BB55740002B737B /* AuthViewModel.swift */; };
 		E48EE05D2BBD7EBF00997DCD /* RegistrationsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48EE05C2BBD7EBF00997DCD /* RegistrationsScreen.swift */; };
+		E48EE05F2BBD89D500997DCD /* RegistrationDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48EE05E2BBD89D500997DCD /* RegistrationDetailScreen.swift */; };
+		E48EE0612BBDDEA400997DCD /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48EE0602BBDDEA400997DCD /* ViewRouter.swift */; };
+		E48EE0632BBDE62200997DCD /* SyncSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48EE0622BBDE62200997DCD /* SyncSpinner.swift */; };
 		E4EF75222BBC4C5B0069EBCD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EF75212BBC4C5B0069EBCD /* User.swift */; };
 		E4EF75242BBC56C90069EBCD /* SIG.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EF75232BBC56C90069EBCD /* SIG.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +58,9 @@
 		E45123582BB53C64002B737B /* Find_My_iFriendApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Find_My_iFriendApp.swift; sourceTree = "<group>"; };
 		E451236C2BB55740002B737B /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		E48EE05C2BBD7EBF00997DCD /* RegistrationsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationsScreen.swift; sourceTree = "<group>"; };
+		E48EE05E2BBD89D500997DCD /* RegistrationDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDetailScreen.swift; sourceTree = "<group>"; };
+		E48EE0602BBDDEA400997DCD /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		E48EE0622BBDE62200997DCD /* SyncSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncSpinner.swift; sourceTree = "<group>"; };
 		E4EF75212BBC4C5B0069EBCD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E4EF75232BBC56C90069EBCD /* SIG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIG.swift; sourceTree = "<group>"; };
 		E4EF75252BBC6B660069EBCD /* Find My iGroup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Find My iGroup.entitlements"; sourceTree = "<group>"; };
@@ -119,6 +125,7 @@
 				E451234D2BB53C64002B737B /* ProfileScreen.swift */,
 				E451234E2BB53C64002B737B /* RegisterScreen.swift */,
 				E48EE05C2BBD7EBF00997DCD /* RegistrationsScreen.swift */,
+				E48EE05E2BBD89D500997DCD /* RegistrationDetailScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -136,6 +143,7 @@
 			children = (
 				E451236C2BB55740002B737B /* AuthViewModel.swift */,
 				E42C466E2BBBE22D00867214 /* EventViewModel.swift */,
+				E48EE0602BBDDEA400997DCD /* ViewRouter.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -144,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				E45123532BB53C64002B737B /* EventListItem.swift */,
+				E48EE0622BBDE62200997DCD /* SyncSpinner.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -246,6 +255,7 @@
 			files = (
 				E45123642BB53C64002B737B /* EventListItem.swift in Sources */,
 				E42C466F2BBBE22D00867214 /* EventViewModel.swift in Sources */,
+				E48EE0612BBDDEA400997DCD /* ViewRouter.swift in Sources */,
 				E42C46692BBA96C000867214 /* MembersList.swift in Sources */,
 				E48EE05D2BBD7EBF00997DCD /* RegistrationsScreen.swift in Sources */,
 				E45123672BB53C64002B737B /* DashboardList.swift in Sources */,
@@ -259,12 +269,14 @@
 				E4EF75242BBC56C90069EBCD /* SIG.swift in Sources */,
 				E42C466D2BBAB13800867214 /* SIGSelectionScreen.swift in Sources */,
 				E451235F2BB53C64002B737B /* LoginScreen.swift in Sources */,
+				E48EE0632BBDE62200997DCD /* SyncSpinner.swift in Sources */,
 				E45123682BB53C64002B737B /* Find_My_iFriendApp.swift in Sources */,
 				E451236D2BB55740002B737B /* AuthViewModel.swift in Sources */,
 				E451235E2BB53C64002B737B /* HomeScreen.swift in Sources */,
 				E451235A2BB53C64002B737B /* Event.swift in Sources */,
 				E45123612BB53C64002B737B /* ProfileScreen.swift in Sources */,
 				E4EF75222BBC4C5B0069EBCD /* User.swift in Sources */,
+				E48EE05F2BBD89D500997DCD /* RegistrationDetailScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

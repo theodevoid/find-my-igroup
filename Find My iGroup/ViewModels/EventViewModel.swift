@@ -18,9 +18,69 @@ class EventViewModel: ObservableObject {
     @Published var myPastEvents = [Event]()
     @Published var joinedMembers = [User]()
     
+    @Published var joinedEvents = [Event]()
+    
     var networkManager = NetworkManager.shared
     
     let defaults = UserDefaults.standard
+    
+    func registerToEvent(eventId: Int) async throws {
+        guard let url = URL(string: "/events/\(eventId)/join", relativeTo: NetworkManager.baseURL ) else { fatalError("Missing URL") }
+        
+        let boundary = UUID().uuidString
+        
+        let session = URLSession.shared
+        
+        var urlRequest = URLRequest(url: url)
+        var requestData = Data()
+        
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue("Bearer " + (defaults.string(forKey: "token") ?? ""), forHTTPHeaderField: "Authorization")
+        
+        let (data, _) = try await URLSession.shared.data(for: urlRequest)
+        
+//        await MainActor.run {
+//            
+//        }
+    }
+    
+    func getJoinedEvents() async throws -> [Event] {
+        guard let url = URL(string: "/events/joined", relativeTo: NetworkManager.baseURL ) else { fatalError("Missing URL") }
+        
+        var urlRequest = URLRequest(url: url)
+        
+        urlRequest.httpMethod = "GET"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue("Bearer " + (defaults.string(forKey: "token") ?? ""), forHTTPHeaderField: "Authorization")
+        
+        let (data, _) = try await URLSession.shared.data(for: urlRequest)
+        
+        let decoder = JSONDecoder()
+        
+        decoder.dateDecodingStrategy = .custom { decoder -> Date in
+            let container = try decoder.singleValueContainer()
+            let dateString = try container.decode(String.self)
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+            formatter.timeZone = TimeZone(identifier: "UTC")
+            
+            if let date = formatter.date(from: dateString) {
+                return date
+            } else {
+                throw DecodingError.dataCorruptedError(in: container, debugDescription: "Invalid date format")
+            }
+        }
+        
+        let decodedEvents = try decoder.decode([Event].self, from: data)
+        
+        await MainActor.run {
+            joinedEvents = decodedEvents
+        }
+        
+        return decodedEvents
+    }
     
     func getEventMembers(eventId: Int) async throws {
         guard let url = URL(string: "/events/\(eventId)/members", relativeTo: NetworkManager.baseURL ) else { fatalError("Missing URL") }
@@ -39,6 +99,7 @@ class EventViewModel: ObservableObject {
 
         await MainActor.run {
             joinedMembers = decodedMembers
+            print(joinedMembers)
         }
     }
     

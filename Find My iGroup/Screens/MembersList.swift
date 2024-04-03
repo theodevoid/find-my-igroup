@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MembersList: View {
-    @ObservedObject var eventViewModel = EventViewModel()
+    @StateObject var eventViewModel = EventViewModel()
     
     var eventId: Int
     

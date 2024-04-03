@@ -10,7 +10,9 @@ import SwiftUI
 struct MyEventsScreen: View {
     @State private var selectedScreen = 0
     
-    @ObservedObject var eventViewModel = EventViewModel()
+    @StateObject var eventViewModel = EventViewModel()
+    
+//    @EnvironmentObject private var viewRouter: ViewRouter
     
     var body: some View {
         
@@ -25,7 +27,7 @@ struct MyEventsScreen: View {
                 
                 ForEach(selectedScreen == 0 ? eventViewModel.upcomingEvents : selectedScreen == 1 ? eventViewModel.myUpcomingEvents : eventViewModel.myPastEvents) { event in
                     ZStack {
-                        EventListItem(organization: event.organization, title: event.title, schedule: event.schedule, price: event.price, isJoined: event.isJoined)
+                        EventListItem(organization: event.organization, title: event.title, schedule: event.schedule, price: event.totalPrice, isJoined: event.isJoined)
                         NavigationLink(destination: EventDetailScreen(id: event.id)) {
                             EmptyView()
                         }
@@ -55,7 +57,7 @@ struct MyEventsScreen: View {
         }
     }
 }
-
-#Preview {
-    MyEventsScreen()
-}
+//
+//#Preview {
+//    MyEventsScreen()
+//}

@@ -15,7 +15,7 @@ struct Event: Decodable, Identifiable {
     var location: String
     var locationDetails: String
     var locationMapLink: String
-    var price: Int
+    var totalPrice: Int
     var requirements: String
     var description: String
     var isJoined: Bool
@@ -27,4 +27,6 @@ struct Event: Decodable, Identifiable {
     
     var paymentProofImageUrl: String?
     var joinedCount: Int?
+    
+//    var pricePerPerson = Int(ceil(self.totalPrice / self.joinedCount))
 }

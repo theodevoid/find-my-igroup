@@ -9,26 +9,32 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var viewModel : AuthViewModel
+    @EnvironmentObject var viewRouter: ViewRouter
+//    @StateObject var eventViewModel: EventViewModel
+    
+    @State var selectedTab = 0
     
     var body: some View {
         Group {
             if viewModel.currentUser != nil {
-                TabView {
-//                    NavigationStack {
-//                        HomeScreen()
-//                    }.tabItem {
-//                        Label("Home", systemImage: "house.fill")
-//                    }
-                    
+                TabView(selection: $viewRouter.currentView) {
                     MyEventsScreen()
                         .tabItem {
                             Label("Events", systemImage: "calendar")
                         }
+                        .tag(0)
+                    
+                    RegistrationsScreen()
+                        .tabItem {
+                            Label("Registrations", systemImage: "tray")
+                        }
+                        .tag(1)
                     
                     ProfileScreen()
                         .tabItem {
                             Label("Profile", systemImage: "person.fill")
                         }
+                        .tag(2)
                     
                 }
             } else {
@@ -44,6 +50,6 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+////    ContentView()
+//}
