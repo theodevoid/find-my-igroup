@@ -14,6 +14,12 @@ struct HomeScreen: View {
     
     @ObservedObject var homeViewModel = EventViewModel()
     
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+//        self.sendDeviceTokenToServer(data: deviceToken)
+        print(deviceToken)
+        print("OYOYOOYOYOYOYO")
+    }
+    
     var body: some View {
         ZStack {
             List($upcomingEvents, id: \.id) { event in

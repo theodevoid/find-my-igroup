@@ -14,15 +14,15 @@ struct ContentView: View {
         Group {
             if viewModel.currentUser != nil {
                 TabView {
-                    NavigationStack {
-                        HomeScreen()
-                    }.tabItem {
-                        Label("Home", systemImage: "house.fill")
-                    }
+//                    NavigationStack {
+//                        HomeScreen()
+//                    }.tabItem {
+//                        Label("Home", systemImage: "house.fill")
+//                    }
                     
                     MyEventsScreen()
                         .tabItem {
-                            Label("My Events", systemImage: "calendar")
+                            Label("Events", systemImage: "calendar")
                         }
                     
                     ProfileScreen()
@@ -35,7 +35,7 @@ struct ContentView: View {
                 LoginScreen()
             }
         }.preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
-            .tint(.indigo)
+            .tint(.orange)
         
         
         //        NavigationStack {

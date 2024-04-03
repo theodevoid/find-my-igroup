@@ -64,7 +64,12 @@ struct LoginScreen: View {
                             let ONE_SECOND = 1000000000
                             try await Task.sleep(nanoseconds: UInt64(ONE_SECOND))
                             
-                            try await viewModel.login(email: email, password: password)
+                            do {
+                                try await viewModel.login(email: email, password: password)
+                            } catch {
+                                print(error)
+                            }
+                            
                             isLoading = false
                         }
                     }) {

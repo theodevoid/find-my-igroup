@@ -11,6 +11,8 @@ import EventKit
 struct EventDetailScreen: View {
     var id: Int = 0
     
+    @Environment(\.dismiss) var dismiss
+    
     @State private var paymentSheetIsShowing = false
     @State private var isLoading = true
     @State private var calendarDialogIsShowing = false
@@ -92,13 +94,16 @@ struct EventDetailScreen: View {
                                         })
                                         .padding(.horizontal, 12)
                                         .padding(.vertical, 6)
-                                        .background(.indigo)
+                                        .background(.orange)
                                         .foregroundStyle(.foreground)
                                         .clipShape(Capsule())
                                         .fullScreenCover(isPresented: $paymentSheetIsShowing, onDismiss: {
                                             Task {
                                                 try await eventViewModel.getEventById(eventId: id)
-                                                isLoading = false
+                                                print("hellooooo")
+                                                if eventViewModel.viewedEvent!.isJoined {
+                                                    dismiss.callAsFunction()
+                                                }
                                             }
                                         }) {
                                             PaymentDetailsScreen(
@@ -249,6 +254,7 @@ struct EventDetailScreen: View {
                 })
                 
             }
+            .toolbar(.hidden, for: .tabBar)
         } else {
             ProgressView()
                 .progressViewStyle(.circular)

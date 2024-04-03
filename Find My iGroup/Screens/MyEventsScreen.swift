@@ -16,14 +16,14 @@ struct MyEventsScreen: View {
         
         NavigationStack {
             List  {
-                Picker("", selection: $selectedScreen) {
-                    Text("Upcoming Events").tag(0)
-                    
-                    Text("Past Events").tag(1)
+                Picker("Select Events", selection: $selectedScreen) {
+                    Text("Upcoming").tag(0)
+                    Text("Joined Upcoming").tag(1)
+                    Text("Joined Past").tag(2)
                 }
                 .pickerStyle(.automatic)
                 
-                ForEach(selectedScreen == 0 ? eventViewModel.myUpcomingEvents : eventViewModel.myPastEvents) { event in
+                ForEach(selectedScreen == 0 ? eventViewModel.upcomingEvents : selectedScreen == 1 ? eventViewModel.myUpcomingEvents : eventViewModel.myPastEvents) { event in
                     ZStack {
                         EventListItem(organization: event.organization, title: event.title, schedule: event.schedule, price: event.price, isJoined: event.isJoined)
                         NavigationLink(destination: EventDetailScreen(id: event.id)) {
@@ -37,15 +37,17 @@ struct MyEventsScreen: View {
             }
             .listStyle(.insetGrouped)
             .listRowSpacing(8)
-            .navigationTitle("My Events")
+            .navigationTitle("Events")
             .refreshable {
                 Task {
+                    try await eventViewModel.getUpcomingEvents()
                     try await eventViewModel.getMyPastEvents()
                     try await eventViewModel.getMyUpcomingEvents()
                 }
             }
             .onAppear {
                 Task {
+                    try await eventViewModel.getUpcomingEvents()
                     try await eventViewModel.getMyPastEvents()
                     try await eventViewModel.getMyUpcomingEvents()
                 }

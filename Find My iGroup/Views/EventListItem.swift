@@ -45,28 +45,43 @@ struct EventListItem: View {
                         Image(systemName: "person.2.fill")
                         Text(organization.capitalized(with: Locale(identifier: "id-ID")))
                             .font(.subheadline)
+                        
+                        Spacer()
+                        
+//                        Text(price, format: .currency(code: "IDR"))
+//                            .foregroundStyle(.indigo)
+//                            .fontWeight(.bold)
+//                            .padding(.all, 8)
+//                            .background(
+//                                .foreground
+//                            )
+//                            .clipShape(.rect(cornerRadius: 8))
+//                            .padding()
                     }
                     Spacer()
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.top)
+//                .padding(.top)
                 .padding(.leading)
-                .padding(.trailing)
                 
-                HStack {
-                    Spacer()
-                    Text(price, format: .currency(code: "IDR"))
-                        .foregroundStyle(.indigo)
-                        .fontWeight(.bold)
-                        .padding(.all, 12)
-                        .background(
-                            .foreground
-                        )
-                        .clipShape(.rect(topLeadingRadius: 8))
-                }
+                Spacer()
+//                .padding(.trailing)
+                
+//                HStack {
+//                    Spacer()
+//                    Text(price, format: .currency(code: "IDR"))
+//                        .foregroundStyle(.indigo)
+//                        .fontWeight(.bold)
+//                        .padding(.all, 8)
+//                        .background(
+//                            .foreground
+//                        )
+//                        .clipShape(.rect(cornerRadius: 8))
+//                        .padding()
+//                }
             }
         }
-        .frame(height: 200)
+        .frame(height: 150)
         
     }
 }

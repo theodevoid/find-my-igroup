@@ -65,7 +65,7 @@ class AuthViewModel: ObservableObject {
     func login(email: String, password: String) async throws {
         guard let url = URL(string: "/auth/login", relativeTo: NetworkManager.baseURL) else { fatalError("Missing URL") }
         
-        let jsonData = try? JSONSerialization.data(withJSONObject: ["email": email, "password": password])
+        let jsonData = try? JSONSerialization.data(withJSONObject: ["email": email, "password": password, "deviceToken": defaults.string(forKey: "deviceToken")])
         
         var urlRequest = URLRequest(url: url)
         
@@ -75,7 +75,11 @@ class AuthViewModel: ObservableObject {
         
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
         
+        print(data)
+        
         let decodedUser = try JSONDecoder().decode(User.self, from: data)
+        
+        print(decodedUser)
         
         self.currentUser = decodedUser
                                 
@@ -109,5 +113,6 @@ class AuthViewModel: ObservableObject {
         defaults.removeObject(forKey: "name")
         defaults.removeObject(forKey: "token")
         defaults.removeObject(forKey: "email")
+        defaults.removeObject(forKey: "deviceToken")
     }
 }
