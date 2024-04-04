@@ -17,7 +17,7 @@ struct HomeScreen: View {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 //        self.sendDeviceTokenToServer(data: deviceToken)
         print(deviceToken)
-        print("OYOYOOYOYOYOYO")
+//        print("OYOYOOYOYOYOYO")
     }
     
     var body: some View {

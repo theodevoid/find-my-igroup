@@ -11,7 +11,7 @@ import Foundation
 final class NetworkManager {
     static let shared = NetworkManager()
     
-    static let baseURL = URL(string: "http://localhost:3000", relativeTo: nil)
+    static let baseURL = URL(string: "https://find-my-igroup-be-production.up.railway.app", relativeTo: nil)
     
     private init () {}
 

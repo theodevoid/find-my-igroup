@@ -18,6 +18,8 @@ struct RegistrationDetailScreen: View {
     @State private var successSheetIsShowing = false
     @State private var isLoading = true
     
+    @State private var paymentIsSuccessful = false
+    
     var body: some View {
         if !isLoading && eventViewModel.viewedEvent != nil {
             VStack {
@@ -158,17 +160,19 @@ struct RegistrationDetailScreen: View {
                         .tint(.orange)
                         .fullScreenCover(isPresented: $paymentSheetIsShowing, onDismiss: {
                             Task {
-                                try await eventViewModel.getEventById(eventId: id)
+//                                try await eventViewModel.getEventById(eventId: id)
                                 
                                 try await Task.sleep(nanoseconds: 1000000000)
                                 
-                                if eventViewModel.viewedEvent?.paymentProofImageUrl != nil {
+                                print(paymentIsSuccessful)
+                                
+                                if paymentIsSuccessful {
                                     successSheetIsShowing = true
                                 }
                             }
                         }) {
                             PaymentDetailsScreen(
-                                isShowing: $paymentSheetIsShowing, paymentAccountNumber: eventViewModel.viewedEvent!.paymentAccountNumber,
+                                isShowing: $paymentSheetIsShowing, paymentIsSuccessful: $paymentIsSuccessful, paymentAccountNumber: eventViewModel.viewedEvent!.paymentAccountNumber,
                                 paymentAccountName: eventViewModel.viewedEvent!.paymentAccountName,
                                 paymentAccountBank: eventViewModel.viewedEvent!.paymentAccountBank,
                                 price: eventViewModel.viewedEvent!.joinedCount != 0 ? Int(ceil(Double(eventViewModel.viewedEvent!.totalPrice / eventViewModel.viewedEvent!.joinedCount!))) : eventViewModel.viewedEvent!.totalPrice, eventId: id, paymentProofImageUrl: eventViewModel.viewedEvent!.paymentProofImageUrl)

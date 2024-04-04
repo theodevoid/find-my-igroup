@@ -20,6 +20,7 @@ struct PaymentDetailsScreen: View {
     @State private var paymentSuccessAlertIsShowing: Bool = false
     
     @Binding var isShowing: Bool
+    @Binding var paymentIsSuccessful: Bool
     
     var paymentAccountNumber: String
     var paymentAccountName: String
@@ -142,7 +143,7 @@ struct PaymentDetailsScreen: View {
                     .alert("Upload Success!", isPresented: $paymentSuccessAlertIsShowing) {
                         Button("OK", role: .cancel) {
                             isShowing = false
-//                            dismiss.callAsFunction()
+                            paymentIsSuccessful = true
                         }
                     }
                 }
